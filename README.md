@@ -18,5 +18,6 @@ streamlit run app.py
 Python DB ORMapper
 
 ### 作成進捗
-テストbookingまで作成
-Next SQLAlchemy
+テストbooking
+SQLAlchemy
+models作成完了
