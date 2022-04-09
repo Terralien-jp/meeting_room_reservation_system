@@ -21,3 +21,6 @@ Python DB ORMapper
 テストbooking
 SQLAlchemy
 models作成完了
+schema作成完了
+crud作成完了
+main編集←今ここ
