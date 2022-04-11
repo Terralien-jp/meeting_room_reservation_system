@@ -1,5 +1,5 @@
-from ast import In
-from operator import index
+# from ast import In
+# from operator import index
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from .database import Base
 
@@ -10,10 +10,10 @@ class User(Base):
     username = Column(String, unique=True, index=True)
 
 class Room(Base):
-    __tableneme__ ='rooms'
+    __tablename__ ='rooms'
     
     room_id = Column(Integer, primary_key=True, index=True)
-    roomname = Column(String, unique=True, index=True)
+    room_name = Column(String, unique=True, index=True)
     capacity = Column(Integer)
 
 class Booking(Base):
