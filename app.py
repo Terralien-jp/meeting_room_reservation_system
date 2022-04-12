@@ -20,7 +20,6 @@ if page == 'users':
 
     if submit_button:
         st.write('## 送信データ')
-        st.write('## レスポンス結果')
         url = 'http://127.0.0.1:8000/users'
         res = requests.post(
             url,
@@ -28,7 +27,6 @@ if page == 'users':
         )
         if res.status_code == 200:
             st.success('ユーザー登録完了')
-        st.write(res.status_code)
         st.json(res.json())
 
 elif page == 'rooms':
