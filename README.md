@@ -9,7 +9,7 @@ https://fastapi.tiangolo.com/ja/
 ## 起動
 
 ```bash
-uvicorn main:app --reload
+uvicorn sql_app.main:app --reload
 # フロントエンドを別窓で起動
 streamlit run app.py
 ```
@@ -25,4 +25,5 @@ schema作成完了
 crud作成完了
 main編集前半完了
 main編集後半完了
+ユーザー登録
 
