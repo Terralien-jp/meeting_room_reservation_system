@@ -1,6 +1,7 @@
 from http.client import ImproperConnectionState
 from sqlalchemy.orm import Session
 from . import models, schemas
+from fastapi import HTTPException
 
 # ユーザー一覧取得
 def get_users(db: Session, skip: int = 0, limit: int = 100):
@@ -32,14 +33,23 @@ def create_room(db: Session, room: schemas.Room):
 
 # 予約登録
 def create_booking(db: Session, booking: schemas.Booking):
-    db_booking = models.Booking(
-        user_id = booking.user_id, 
-        room_id = booking.room_id,
-        booked_num = booking.booked_num,
-        start_datetime = booking.start_datetime,
-        end_datetime = booking.end_datetime,
-    )
-    db.add(db_booking)
-    db.commit()
-    db.refresh(db_booking)
-    return db_booking
+    db_booked = db.query(models.Booking).\
+        filter(models.Booking.room_id == booking.room_id).\
+        filter(models.Booking.end_datetime > booking.start_datetime).\
+        filter(models.Booking.start_datetime < booking.end_datetime).\
+        all()
+    # 重複するデータがない場合
+    if len(db_booked) == 0:
+        db_booking = models.Booking(
+            user_id = booking.user_id, 
+            room_id = booking.room_id,
+            booked_num = booking.booked_num,
+            start_datetime = booking.start_datetime,
+            end_datetime = booking.end_datetime,
+        )
+        db.add(db_booking)
+        db.commit()
+        db.refresh(db_booking)
+        return db_booking
+    else:
+        raise HTTPException(status_code=404, detail="Alredy booked")
