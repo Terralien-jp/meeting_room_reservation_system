@@ -16,18 +16,3 @@ streamlit run app.py
 
 ## SQLAlchamy
 Python DB ORMapper
-
-### 作成進捗
-テストbooking
-SQLAlchemy
-models作成完了
-schema作成完了
-crud作成完了
-main編集前半完了
-main編集後半完了
-ユーザー登録完了
-会議質登録画面完了
-会議室予約画面の作成１完了
-会議室予約画面の作成２完了
-予約一覧表示完了
-
