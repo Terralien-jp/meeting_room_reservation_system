@@ -52,4 +52,4 @@ def create_booking(db: Session, booking: schemas.Booking):
         db.refresh(db_booking)
         return db_booking
     else:
-        raise HTTPException(status_code=404, detail="Alredy booked")
+        raise HTTPException(status_code=404, detail="Already booked")
